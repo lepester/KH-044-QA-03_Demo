@@ -85,6 +85,7 @@ public class RozetkaTravel extends BasePage {
         return this;
     }
 
+    //Needs special conditions
     public RozetkaTravel hotelScore() {
         clickableWaiter(searchButton);
         rating.click();
@@ -106,11 +107,12 @@ public class RozetkaTravel extends BasePage {
     public RozetkaTravel dateDeparture() {
         clickableWaiter(searchButton);
         date.click();
-        visibilityWaiter(plusButton);
+        clickableWaiter(plusButton);
         plusButton.click();
         return this;
     }
 
+    //Needs special conditions
     public RozetkaTravel nightCount() {
         clickableWaiter(nightCount);
         nightCount.click();

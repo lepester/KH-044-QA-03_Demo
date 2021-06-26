@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
     public WebDriver driver;
     public WebDriverWait pageLoading() {
-        return new WebDriverWait(driver, 10);
+        return new WebDriverWait(driver, 25);
     }
 
     public void clickableWaiter(WebElement wait) {
