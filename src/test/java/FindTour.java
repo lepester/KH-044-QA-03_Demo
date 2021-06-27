@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravel;
 
-public class FindTourTest extends BaseTest {
+public class FindTour extends BaseTest {
     @Test
     public void findTourTest() {
         RozetkaTravel rozetkaTravel = new RozetkaTravel(driver);
