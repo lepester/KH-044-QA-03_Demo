@@ -9,6 +9,7 @@ public class FilterByPrice extends BaseTest {
                 .closeSplashWindow()
                 .findTour()
                 .minPrice("16500")
-                .maxPrice("21000");
+                .maxPrice("21000")
+                .getPricesByFilter();
     }
 }

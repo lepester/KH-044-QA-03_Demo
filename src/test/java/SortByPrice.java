@@ -9,6 +9,6 @@ public class SortByPrice extends BaseTest {
                 .closeSplashWindow()
                 .findTour()
                 .sortByPrice()
-                .getPrices();
+                .getPricesBySort();
     }
 }
