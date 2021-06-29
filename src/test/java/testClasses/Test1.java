@@ -3,21 +3,26 @@ package testClasses;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import rozetkaPageObjects.CartPage;
-import rozetkaPageObjects.HomePage;
-import rozetkaPageObjects.ProductPage;
+import rozetkaPageObjects.*;
 
 public class Test1 extends BaseTest {
 
-    @DataProvider(name = "searchData")
-    public Object[][] searchData() {
+    @DataProvider(name = "searchProduct")
+    public Object[][] searchProduct() {
         return new Object[][] {
                 {"Ноутбук"},
                 {"Клавиатура"}
         };
     }
 
-    @Test(dataProvider = "searchData", groups = {"rozetkaTest", "buyingProductTest"})
+    @DataProvider(name = "searchCity")
+    public Object[][] searchCity() {
+        return new Object[][] {
+                {"Киев"}
+        };
+    }
+
+    @Test(dataProvider = "searchProduct", groups = {"rozetkaTest", "buyingProductTest"})
     public void buyProduct(String searchText) {
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = homePage.openPage()
@@ -42,5 +47,18 @@ public class Test1 extends BaseTest {
                 .changeLanguage()
                 .getSearchButtonText();
         Assert.assertFalse(newSearchButtonText.equals(oldSearchButtonText));
+    }
+
+    @Test(dataProvider = "searchCity", groups = {"rozetkaTest"})
+    public void switchCity(String city) {
+        HomePage homePage = new HomePage(driver);
+        String currentCity = homePage.openPage()
+                .openSideMenu()
+                .clickCityButton()
+                .searchCity(city)
+                .submitCity()
+                .openSideMenu()
+                .getCurrentCity();
+        Assert.assertTrue(currentCity.contains(city), "A city has not been changed to " + city);
     }
 }
