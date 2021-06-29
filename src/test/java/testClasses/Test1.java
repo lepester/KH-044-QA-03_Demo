@@ -32,4 +32,15 @@ public class Test1 extends BaseTest {
                 "The product was not added into the shopping cart.");
         cartPage.closeCartPage();
     }
+
+    @Test(groups = {"rozetkaTest"})
+    public void switchLanguage() {
+        HomePage homePage = new HomePage(driver);
+        String oldSearchButtonText = homePage.openPage()
+                .getSearchButtonText();
+        String newSearchButtonText = homePage.openSideMenu()
+                .changeLanguage()
+                .getSearchButtonText();
+        Assert.assertFalse(newSearchButtonText.equals(oldSearchButtonText));
+    }
 }

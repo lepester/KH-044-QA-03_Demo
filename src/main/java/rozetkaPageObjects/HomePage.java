@@ -1,17 +1,9 @@
 package rozetkaPageObjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
     PageHeader header;
-
-    @FindBy(xpath = "//input[@name='search']")
-    WebElement searchInput;
-    @FindBy(xpath = "//button[contains(@class,'search-form__submit')]")
-    WebElement searchButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -23,14 +15,15 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public SearchResultsPage searchProduct(String searchText) {
-        searchInput.clear();
-        searchInput.sendKeys(searchText);
-        searchButton.click();
-        return new SearchResultsPage(driver);
+    public PageSideMenu openSideMenu() {
+        return header.clickSideMenuButton();
     }
 
-    public SearchResultsPage chooseMonitorsCategoryInCatalog() {
-        return header.chooseMonitorsCategoryInCatalog();
+    public String getSearchButtonText() {
+        return  header.getSearchButtonText();
+    }
+
+    public SearchResultsPage searchProduct(String searchText) {
+        return header.searchProduct(searchText);
     }
 }

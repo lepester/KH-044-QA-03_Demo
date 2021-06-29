@@ -6,24 +6,31 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PageHeader extends BasePage {
-    @FindBy(css = "button#fat-menu")
-    WebElement catalogButton;
-    @FindBy(xpath = "//fat-menu/div")
-    WebElement catalogContent;
-    @FindBy(xpath = "//fat-menu//a[@class='menu__link'][@href='https://hard.rozetka.com.ua/monitors/c80089/']")
-    WebElement catalogMonitorLink;
-
-    @FindBy(xpath = "//li[contains(@class,'header-actions__item--user')]//button")
-    WebElement signInButton;
+    @FindBy(xpath = "//input[@name='search']")
+    WebElement searchInput;
+    @FindBy(xpath = "//button[contains(@class,'search-form__submit')]")
+    WebElement searchButton;
+    @FindBy(css = "button>svg>use[href*='icon-menu']")
+    WebElement sideMenuButton;
 
     public PageHeader(WebDriver driver) {
         super(driver);
     }
 
-    public SearchResultsPage chooseMonitorsCategoryInCatalog() {
-        catalogButton.click();
-        explicitWait.until(ExpectedConditions.visibilityOfAllElements(catalogContent));
-        catalogMonitorLink.click();
+    public SearchResultsPage searchProduct(String searchText) {
+        searchInput.clear();
+        searchInput.sendKeys(searchText);
+        searchButton.click();
         return new SearchResultsPage(driver);
+    }
+
+    public PageSideMenu clickSideMenuButton() {
+        sideMenuButton.click();
+        return new PageSideMenu(driver);
+    }
+
+    public String getSearchButtonText() {
+        String title = searchButton.getText();
+        return title;
     }
 }
