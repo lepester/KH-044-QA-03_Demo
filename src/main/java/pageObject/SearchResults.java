@@ -1,16 +1,14 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import sun.security.mscapi.CPublicKey;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class SearchResults extends BasePage {
 
@@ -31,6 +29,7 @@ public class SearchResults extends BasePage {
         visibilityWaiter(firstProduct);
     }
 
+    @Step("Set minimal price of tour")
     public SearchResults minPrice(String minInput) {
         clickableWaiter(setMinPrice);
         setMinPrice.clear();
@@ -38,6 +37,7 @@ public class SearchResults extends BasePage {
         return this;
     }
 
+    @Step("Set maximum price of tour")
     public SearchResults maxPrice(String maxInput) {
         clickableWaiter(setMaxPrice);
         setMaxPrice.clear();
@@ -47,32 +47,34 @@ public class SearchResults extends BasePage {
         return this;
     }
 
+    @Step("Click 'OK' button")
     public SearchResults sortByPrice() {
         sortByPrice.click();
         firstProduct.isDisplayed();
         return this;
     }
-    
+
+    @Step("Find a product by price sort")
     public SearchResults getPricesBySort() {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
-        String[] str = new String[5];
+        String[] str = new String[2];
         int size = str.length;
         for (int i = 0; i < size; i++) {
-            str[i] = prices.get(i).getText().replace(" ", "");
+            str[i] = prices.get(i).getText().replace(" ", "" );
+
         }
         int[] pricesArr = new int [size];
         for (int i = 0; i < size; i++) {
             pricesArr[i] = Integer.parseInt(str[i]);
         }
-
         for (int i = 0; i < pricesArr.length - 1; i++) {
             Assert.assertTrue(pricesArr[i] <= pricesArr[i+1]);
         }
-
         return this;
     }
 
+    @Step("Find a product by price filter")
     public SearchResults getPricesByFilter() {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));

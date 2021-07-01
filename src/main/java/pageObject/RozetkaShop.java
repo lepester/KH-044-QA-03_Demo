@@ -1,5 +1,7 @@
 package pageObject;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,18 +23,19 @@ public class RozetkaShop extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Open Rozetka Shop")
     public RozetkaShop openPage() {
         driver.get("https://rozetka.com.ua/");
         return this;
     }
-
+    @Step("Open Google Play Store")
     public GooglePlay openGooglePlay() {
         androidApp.click();
         ArrayList<String> tab = new ArrayList<String> (driver.getWindowHandles());
         driver.switchTo().window(tab.get(1));
         return new GooglePlay(driver);
     }
-
+    @Step("Open Apple App Store")
     public AppStore openAppleStore() {
         iphoneApp.click();
         ArrayList<String> tab = new ArrayList<String> (driver.getWindowHandles());

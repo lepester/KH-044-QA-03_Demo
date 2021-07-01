@@ -31,3 +31,7 @@ hs_err_pid*
 
 # Screenshots
 *.png
+
+# Allure Reports
+/.allure
+/target
