@@ -3,7 +3,6 @@ package rozetkaPageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PageHeader extends BasePage {
     @FindBy(xpath = "//input[@name='search']")
@@ -24,9 +23,9 @@ public class PageHeader extends BasePage {
         return new SearchResultsPage(driver);
     }
 
-    public PageSideMenu clickSideMenuButton() {
+    public PageToggledSideMenu openSideMenu() {
         sideMenuButton.click();
-        return new PageSideMenu(driver);
+        return new PageToggledSideMenu(driver);
     }
 
     public String getSearchButtonText() {

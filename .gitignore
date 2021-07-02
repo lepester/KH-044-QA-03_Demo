@@ -23,7 +23,6 @@
 hs_err_pid*
 
 # Cache files
-.target/
 .idea/
 
 # IntelijIdea cache files
@@ -31,3 +30,5 @@ hs_err_pid*
 
 # Screenshots
 *.png
+/target/
+/.allure/

@@ -4,12 +4,14 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
     PageHeader header;
-    PageSideMenu pageSideMenu;
+    PageToggledSideMenu pageToggledSideMenu;
+    PageSideBar pageSideBar;
 
     public HomePage(WebDriver driver) {
         super(driver);
         header = new PageHeader(driver);
-        pageSideMenu = new PageSideMenu(driver);
+        pageToggledSideMenu = new PageToggledSideMenu(driver);
+        pageSideBar = new PageSideBar(driver);
     }
 
     public HomePage openPage() {
@@ -17,19 +19,16 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public PageSideMenu openSideMenu() {
-        return header.clickSideMenuButton();
+    public PageHeader getHeader() {
+        return header;
     }
 
-    public String getSearchButtonText() {
-        return  header.getSearchButtonText();
+    public PageSideBar getPageSideBar() {
+        return pageSideBar;
     }
 
-    public String getCurrentCity() {
-        return pageSideMenu.getCurrentCity();
-    }
-
-    public SearchResultsPage searchProduct(String searchText) {
-        return header.searchProduct(searchText);
+    public RozetkaObminPage openRozetkaObminPage() {
+        driver.get("https://rozetka.com.ua/pages/obmin/");
+        return new RozetkaObminPage(driver);
     }
 }
