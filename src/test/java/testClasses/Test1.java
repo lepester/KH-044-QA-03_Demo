@@ -9,12 +9,19 @@ import rozetkaPageObjects.HomePage;
 
 public class Test1 extends BaseTest {
 
+    @DataProvider(name = "searchCity")
+    public Object[][] searchCity() {
+        return new Object[][] {
+                {"Киев"},
+                {"Львов"}
+        };
+    }
+
     @Test(dataProvider = "searchCity", groups = {"rozetkaTest"})
     @Description("switching location (city) to another one")
     public void switchCity(String city) {
         HomePage homePage = new HomePage(this.driver);
-        String currentCity = homePage.openPage()
-                .getHeader()
+        String currentCity = homePage.getHeader()
                 .openSideMenu()
                 .clickCityButton()
                 .searchCity(city)
