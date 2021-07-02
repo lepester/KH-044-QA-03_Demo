@@ -22,10 +22,4 @@ public class HomePage extends BasePage {
     public PageHeader getHeader() {
         return header;
     }
-
-    @Step("Open https://rozetka.com.ua/pages/obmin/ web-site for determination of device`s exchange cost")
-    public RozetkaObminPage openRozetkaObminPage() {
-        driver.get("https://rozetka.com.ua/pages/obmin/");
-        return new RozetkaObminPage(driver);
-    }
 }
