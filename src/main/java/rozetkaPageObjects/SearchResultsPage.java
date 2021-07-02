@@ -1,5 +1,6 @@
 package rozetkaPageObjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,7 @@ public class SearchResultsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Click first product for switching to its page")
     public ProductPage clickFirstProduct() {
         goodsCatalog.get(0).click();
         return new ProductPage(driver);

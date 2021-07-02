@@ -1,6 +1,7 @@
 package rozetkaPageObjects;
 
 import com.google.common.base.CharMatcher;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,6 +46,7 @@ public class RozetkaObminPage extends BasePage {
         deviceSearchField.sendKeys(Keys.ENTER);
     }
 
+    @Step("Input type of device for exchange")
     public RozetkaObminPage inputDeviceType(String deviceType) {
         explicitWait.until(ExpectedConditions.visibilityOfAllElements(costSection));
         driver.switchTo().frame(costSection);
@@ -54,6 +56,7 @@ public class RozetkaObminPage extends BasePage {
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Input producer of device for exchange")
     public RozetkaObminPage inputDeviceProducer(String deviceProducer) {
         action.moveToElement(deviceProducerSection).build().perform();
         deviceProducerSection.click();
@@ -68,34 +71,40 @@ public class RozetkaObminPage extends BasePage {
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Click button to indicate that device is turned on")
     public RozetkaObminPage chooseTurnedOnDevice() {
         action.moveToElement(deviceIsTurnedOnButton).build().perform();
         deviceIsTurnedOnButton.click();
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Click button to indicate that all functions of device work")
     public RozetkaObminPage chooseDeviceAllFunctionsWork() {
         action.moveToElement(deviceAllFunctionsWorkButton).build().perform();
         deviceAllFunctionsWorkButton.click();
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Click button to indicate that screen of device works")
     public RozetkaObminPage chooseDeviceScreenWorks() {
         action.moveToElement(deviceScreenWorksButton).build().perform();
         deviceScreenWorksButton.click();
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Click button to indicate that screen of device has no scratches")
     public RozetkaObminPage chooseDeviceWithScreenWithoutScratches() {
         deviceWithScreenWithoutScratches.click();
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Click button to indicate that cover of device has no scratches")
     public RozetkaObminPage chooseDeviceWithCoverWithoutScratches() {
         deviceWithCoverWithoutScratches.click();
         return new RozetkaObminPage(driver);
     }
 
+    @Step("Get cost of device for exchange offering by rozetka.com.ua")
     public int getDeviceCost() {
         action.moveToElement(deviceCost).build().perform();
         String costDevice = deviceCost.getText().replaceAll("\\s+", "");

@@ -1,5 +1,6 @@
 package rozetkaPageObjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,12 +18,14 @@ public class PageToggledSideMenu extends BasePage {
         super(driver);
     }
 
+    @Step("Click button of the language for switching page to another language")
     public HomePage changeLanguage() {
         explicitWait.until(ExpectedConditions.visibilityOfAllElements(anotherLanguage));
         anotherLanguage.click();
         return new HomePage(driver);
     }
 
+    @Step("Click button for switching to another location (city)")
     public CityCartPage clickCityButton() {
         explicitWait.until(ExpectedConditions.visibilityOfAllElements(cityButton));
         cityButton.click();

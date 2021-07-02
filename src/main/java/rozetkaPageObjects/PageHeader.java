@@ -1,5 +1,6 @@
 package rozetkaPageObjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,7 @@ public class PageHeader extends BasePage {
         super(driver);
     }
 
+    @Step("Search for the query product on the web-site")
     public SearchResultsPage searchProduct(String searchText) {
         searchInput.clear();
         searchInput.sendKeys(searchText);
@@ -23,6 +25,7 @@ public class PageHeader extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Open toggled side-menu on the page")
     public PageToggledSideMenu openSideMenu() {
         sideMenuButton.click();
         return new PageToggledSideMenu(driver);

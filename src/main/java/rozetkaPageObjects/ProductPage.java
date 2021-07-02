@@ -1,5 +1,6 @@
 package rozetkaPageObjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,6 +22,7 @@ public class ProductPage extends BasePage {
         return productTitle.getText();
     }
 
+    @Step("Click a button on the product`s page for adding product into the shopping cart")
     public CartPage buyProduct() {
         explicitWait.until(ExpectedConditions.visibilityOfAllElements(buyButton));
         Actions actions = new Actions(driver);
