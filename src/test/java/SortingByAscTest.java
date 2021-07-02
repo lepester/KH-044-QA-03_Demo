@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.SearchResultsProducts;
@@ -5,6 +6,7 @@ import pageObject.SearchResultsProducts;
 public class SortingByAscTest extends BaseTest {
 
     @Test
+    @Description("Get to the section of products and simply click on 'sort by ascending' button")
     public void sortingByAscTest() {
         SearchResultsProducts searchResultsProducts = new SearchResultsProducts(driver);
         searchResultsProducts

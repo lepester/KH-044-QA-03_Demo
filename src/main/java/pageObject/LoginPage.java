@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ public class LoginPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Open Register Page")
     public RegisterPage goToRegister(){
         clickableWaiter(registerButton);
         registerButton.click();

@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -36,11 +37,13 @@ public class SearchResultsProducts extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Open section monitors")
     public SearchResultsProducts openPage(){
         driver.get("http://surl.li/xyto");
         return this;
     }
 
+    @Step("Sort products")
     public void settingsSort(String value){
         sort.click();
         WebElement listBox = driver.findElement(By.xpath("//select"));
@@ -52,6 +55,8 @@ public class SearchResultsProducts extends BasePage{
             e.printStackTrace();
         }
     }
+
+    @Step("Get prices from the products")
     public int[] getPrices() {
         redrawnWaiter(pricesList.get(0));
         String[] str = new String[10];
@@ -65,6 +70,8 @@ public class SearchResultsProducts extends BasePage{
         }
         return pricesArr;
     }
+
+    @Step("Insert the min and max prices")
     public void inputFields(String min, String max){
         minPrice.clear();
         minPrice.sendKeys(min);
@@ -86,6 +93,8 @@ public class SearchResultsProducts extends BasePage{
     public WebElement getButtonPriceOk(){
         return buttonPriceOk;
     }
+
+    @Step("Choose all sellers in filter")
     public SearchResultsProducts chooseSellerFilter(String []filtersArray) {
         try {
             for (String moreFilter : filtersArray) {

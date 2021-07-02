@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,6 +26,7 @@ public class PriceFieldValidationTest extends BaseTest{
     }
 
     @Test(dataProvider = "IncorrectInput")
+    @Description("Get to the section of products and insert incorrect data on the fields")
     public void verifyIncorrectField(String min, String max) {
         SearchResultsProducts searchResultsProducts = new SearchResultsProducts(driver);
 
@@ -36,6 +38,7 @@ public class PriceFieldValidationTest extends BaseTest{
     }
 
     @Test(dataProvider = "CorrectInput")
+    @Description("Get to the section of products and insert correct data on the fields")
     public void verifyCorrectField(String min, String max) {
         SearchResultsProducts searchResultsProducts = new SearchResultsProducts(driver);
 

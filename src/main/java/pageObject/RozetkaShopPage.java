@@ -1,11 +1,12 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class RozetkaShopPage extends BasePage {
 
     @FindBy(css = "input.search-form__input")
     private WebElement searchFieldRozetka;
@@ -18,16 +19,18 @@ public class HomePage extends BasePage {
     @FindBy(css = ".main-auth__button")
     private WebElement authButton;
 
-    public HomePage(WebDriver driver) {
+    public RozetkaShopPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage openPage(){
+    @Step("Open Rozetka Shop")
+    public RozetkaShopPage openPage(){
         driver.get("https://rozetka.com.ua/");
         return this;
     }
 
+    @Step("Open Login Page")
     public LoginPage goToLoginPage(){
         clickableWaiter(authButton);
         authButton.click();
