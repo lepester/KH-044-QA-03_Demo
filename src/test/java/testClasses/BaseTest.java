@@ -27,7 +27,7 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true, dependsOnMethods = {"setUp"})
     public void openPage() {
-        driver.get("https://rozetka.com.ua/");
+        driver.get(url);
     }
 
     @AfterMethod(alwaysRun = true)
