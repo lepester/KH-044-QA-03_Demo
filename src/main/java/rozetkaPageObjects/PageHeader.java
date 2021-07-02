@@ -24,15 +24,4 @@ public class PageHeader extends BasePage {
         searchButton.click();
         return new SearchResultsPage(driver);
     }
-
-    @Step("Open toggled side-menu on the page")
-    public PageToggledSideMenu openSideMenu() {
-        sideMenuButton.click();
-        return new PageToggledSideMenu(driver);
-    }
-
-    public String getSearchButtonText() {
-        String title = searchButton.getText();
-        return title;
-    }
 }
