@@ -22,15 +22,14 @@ public class Test1 extends BaseTest {
     @Description("searching and adding products to the shopping cart")
     public void buyProduct(String searchText) {
         HomePage homePage = new HomePage(driver);
-        ProductPage productPage = homePage.openPage()
-                .getHeader()
+        ProductPage productPage = homePage.getHeader()
                 .searchProduct(searchText)
                 .clickFirstProduct();
         String actualProductTitle = productPage.getProductTitle();
         Assert.assertTrue(actualProductTitle.contains(searchText),
                 "The product`s title does not contain your search query.");
         CartPage cartPage = productPage.buyProduct();
-        String productTitleInCart = cartPage.getProductInCartTitle();
+        String productTitleInCart = cartPage.getTitleOfProductInShoppingCart();
         Assert.assertTrue(productTitleInCart.contains(actualProductTitle),
                 "The product was not added into the shopping cart.");
         cartPage.closeCartPage();
@@ -40,8 +39,7 @@ public class Test1 extends BaseTest {
     @Description("switching language of the web-site to another one")
     public void switchLanguage() {
         HomePage homePage = new HomePage(driver);
-        String oldSearchButtonText = homePage.openPage()
-                .getHeader()
+        String oldSearchButtonText = homePage.getHeader()
                 .getSearchButtonText();
         String newSearchButtonText = homePage.getHeader()
                 .openSideMenu()
@@ -54,7 +52,8 @@ public class Test1 extends BaseTest {
     @DataProvider(name = "searchCity")
     public Object[][] searchCity() {
         return new Object[][]{
-                {"Киев"}
+                {"Киев"},
+                {"Львов"}
         };
     }
 
@@ -62,8 +61,7 @@ public class Test1 extends BaseTest {
     @Description("switching location (city) to another one")
     public void switchCity(String city) {
         HomePage homePage = new HomePage(this.driver);
-        String currentCity = homePage.openPage()
-                .getHeader()
+        String currentCity = homePage.getHeader()
                 .openSideMenu()
                 .clickCityButton()
                 .searchCity(city)

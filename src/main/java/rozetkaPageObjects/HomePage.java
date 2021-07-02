@@ -13,12 +13,6 @@ public class HomePage extends BasePage {
         pageToggledSideMenu = new PageToggledSideMenu(driver);
     }
 
-    @Step("Open https://rozetka.com.ua/ web-site home page")
-    public HomePage openPage() {
-        driver.get("https://rozetka.com.ua/");
-        return new HomePage(driver);
-    }
-
     public PageHeader getHeader() {
         return header;
     }
