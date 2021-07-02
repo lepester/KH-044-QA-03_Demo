@@ -13,7 +13,6 @@ public abstract class DriverManager {
     public void quiteDriver() {
         if (driver != null) {
             driver.quit();
-            driver = null;
         }
     }
 

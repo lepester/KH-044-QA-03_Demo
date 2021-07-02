@@ -13,8 +13,7 @@ public class Test1 extends BaseTest {
     @Description("switching language of the web-site to another one")
     public void switchLanguage() {
         HomePage homePage = new HomePage(driver);
-        String oldSearchButtonText = homePage.openPage()
-                .getHeader()
+        String oldSearchButtonText = homePage.getHeader()
                 .getSearchButtonText();
         String newSearchButtonText = homePage.getHeader()
                 .openSideMenu()

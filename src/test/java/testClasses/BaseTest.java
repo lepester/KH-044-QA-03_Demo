@@ -24,6 +24,11 @@ public class BaseTest {
         driver = driverManager.getDriver();
     }
 
+    @BeforeMethod(alwaysRun = true, dependsOnMethods = {"setUp"})
+    public void openPage() {
+        driver.get("https://rozetka.com.ua/");
+    }
+
     @AfterMethod(alwaysRun = true)
     public void quitBrowser() {
         driverManager.quiteDriver();
