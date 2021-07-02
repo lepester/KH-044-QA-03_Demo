@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 
 @Listeners(ListenerTest.class)
 public class BaseTest {
+    protected final String url = "https://rozetka.com.ua/";
     protected WebDriver driver;
     protected DriverManager driverManager;
 
@@ -26,7 +27,7 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true, dependsOnMethods = {"setUp"})
     public void openPage() {
-        driver.get("https://rozetka.com.ua/");
+        driver.get(url);
     }
 
     @AfterMethod(alwaysRun = true)
