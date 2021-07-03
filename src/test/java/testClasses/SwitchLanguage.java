@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.RozetkaHomePage;
 
-public class switchLanguage extends BaseTest {
+public class SwitchLanguage extends BaseTest {
 
     @Test(groups = {"rozetkaTest"})
     @Description("switching language of the web-site to another one")
