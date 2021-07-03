@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class SearchResults extends BasePage {
+public class SearchResultsTravel extends BasePage {
 
     @FindBy(css = "div.s-result-item")
     private WebElement firstProduct;
@@ -23,14 +23,14 @@ public class SearchResults extends BasePage {
     @FindBy(xpath = "//button[contains(text(), 'Цене')]")
     private WebElement sortByPrice;
 
-    public SearchResults(WebDriver driver) {
+    public SearchResultsTravel(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         visibilityWaiter(firstProduct);
     }
 
     @Step("Set minimal price of tour")
-    public SearchResults minPrice(String minInput) {
+    public SearchResultsTravel minPrice(String minInput) {
         clickableWaiter(setMinPrice);
         setMinPrice.clear();
         setMinPrice.sendKeys(minInput);
@@ -38,7 +38,7 @@ public class SearchResults extends BasePage {
     }
 
     @Step("Set maximum price of tour")
-    public SearchResults maxPrice(String maxInput) {
+    public SearchResultsTravel maxPrice(String maxInput) {
         clickableWaiter(setMaxPrice);
         setMaxPrice.clear();
         setMaxPrice.sendKeys(maxInput);
@@ -48,14 +48,14 @@ public class SearchResults extends BasePage {
     }
 
     @Step("Click 'OK' button")
-    public SearchResults sortByPrice() {
+    public SearchResultsTravel sortByPrice() {
         sortByPrice.click();
         firstProduct.isDisplayed();
         return this;
     }
 
     @Step("Find a product by price sort")
-    public SearchResults getPricesBySort() {
+    public SearchResultsTravel getPricesBySort() {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
         String[] str = new String[2];
@@ -75,7 +75,7 @@ public class SearchResults extends BasePage {
     }
 
     @Step("Find a product by price filter")
-    public SearchResults getPricesByFilter() {
+    public SearchResultsTravel getPricesByFilter() {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
 

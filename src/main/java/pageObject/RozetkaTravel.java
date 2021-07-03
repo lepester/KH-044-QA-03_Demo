@@ -78,9 +78,9 @@ public class RozetkaTravel extends BasePage {
         return this;
     }
     @Step("Click 'find' button")
-    public SearchResults findTour() {
+    public SearchResultsTravel findTour() {
         searchButton.click();
-        return new SearchResults(driver);
+        return new SearchResultsTravel(driver);
     }
 
 }
