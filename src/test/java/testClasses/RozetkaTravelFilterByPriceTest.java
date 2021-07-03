@@ -4,7 +4,7 @@ import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravelHomePage;
 
-public class FilterByPrice extends BaseTest {
+public class RozetkaTravelFilterByPriceTest extends BaseTest {
 
     @Test
     @Description("Get to the Rozetka Travel and set minimum and maximum price for a tour")
