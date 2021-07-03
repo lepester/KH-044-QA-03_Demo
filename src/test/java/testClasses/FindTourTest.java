@@ -1,6 +1,8 @@
 package testClasses;
 
 import io.qameta.allure.Description;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravelHomePage;
 
@@ -16,7 +18,8 @@ public class FindTourTest extends BaseTest {
                 .cityDeparture()
                 .cityArrival("Турция")
                 .dateDeparture()
-                .foodChoice()
+                .mealChoice()
                 .findTour();
+        Assert.assertTrue(driver.findElement(By.cssSelector("div.s-result-item")).isDisplayed());
     }
 }

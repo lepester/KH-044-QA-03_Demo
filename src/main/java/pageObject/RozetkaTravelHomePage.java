@@ -14,17 +14,19 @@ public class RozetkaTravelHomePage extends BasePage {
     @FindBy(css = "div.j-modal__close")
     private WebElement closeButton;
 
-    @FindBy(xpath = "//div[@class='select-toggle select-toggle_has-icon']")
-    private WebElement city;
+    @FindBy(xpath = "//i[@class='select-icon main-search__icon-departure']")
+    private WebElement cityDeparture;
+    @FindBy(xpath = "//div[@id='83f0378c-be12-45f3-a023-f412858caddc']")
+    private WebElement cityKiev;
     @FindBy(css = "input.button")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//div[contains(text(), 'Тип питания')]")
-    private WebElement food;
-    @FindBy(id = "c098d41b-99c4-494b-8766-276b3aa6d773")
-    private WebElement noFood;
+    @FindBy(css = "i.main-search__icon-meals")
+    private WebElement meals;
+    @FindBy(xpath = "//div[@id='c098d41b-99c4-494b-8766-276b3aa6d773']")
+    private WebElement allInclusive;
 
-    @FindBy(xpath = "(//div[@class='select-box']) [5]")
+    @FindBy(css = "i.main-search__icon-calendar")
     private WebElement date;
     @FindBy(css = "span.main-search__counter-button_plus")
     private WebElement plusButton;
@@ -40,9 +42,10 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose city departure")
+    @Step("Choose city departure as 'Киев'")
     public RozetkaTravelHomePage cityDeparture() {
-        city.click();
+        actions().moveToElement(cityDeparture).click().perform();
+        cityKiev.click();
         return this;
     }
 
@@ -54,19 +57,19 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose food category")
-    public RozetkaTravelHomePage foodChoice() {
-        clickableWaiter(food);
-        food.click();
-        visibilityWaiter(noFood);
-        noFood.click();
+    @Step("Choose food category as 'Всё включено'")
+    public RozetkaTravelHomePage mealChoice() {
+        clickableWaiter(meals);
+        actions().moveToElement(meals).click().perform();
+        visibilityWaiter(allInclusive);
+        allInclusive.click();
         return this;
     }
 
-    @Step("Choose date of departure")
+    @Step("Choose date of departure as 'Сегодняшняя дата + 4 дня'")
     public RozetkaTravelHomePage dateDeparture() {
         clickableWaiter(searchButton);
-        date.click();
+        actions().moveToElement(date).click().perform();
         clickableWaiter(plusButton);
         plusButton.click();
         return this;
