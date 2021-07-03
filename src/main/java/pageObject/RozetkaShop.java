@@ -15,8 +15,6 @@ public class RozetkaShop extends BasePage {
     private WebElement androidApp;
     @FindBy(xpath = "//img[@alt='AppStore']")
     private WebElement iphoneApp;
-    @FindBy(css = "body")
-    private WebElement body;
 
     public RozetkaShop(WebDriver driver) {
         this.driver = driver;
@@ -28,6 +26,7 @@ public class RozetkaShop extends BasePage {
         driver.get("https://rozetka.com.ua/");
         return this;
     }
+
     @Step("Open Google Play Store")
     public GooglePlay openGooglePlay() {
         androidApp.click();
@@ -35,6 +34,7 @@ public class RozetkaShop extends BasePage {
         driver.switchTo().window(tab.get(1));
         return new GooglePlay(driver);
     }
+
     @Step("Open Apple App Store")
     public AppStore openAppleStore() {
         iphoneApp.click();
@@ -42,5 +42,5 @@ public class RozetkaShop extends BasePage {
         driver.switchTo().window(tab.get(1));
         return new AppStore(driver);
     }
-
 }
+

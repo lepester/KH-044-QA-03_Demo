@@ -13,3 +13,4 @@ public class AppStoreLink extends BaseTest {
                 .openAppleStore();
     }
 }
+
