@@ -13,7 +13,7 @@ public class PageToggledSideMenu extends BasePage {
     WebElement cityButton;
     @FindBy(css = "span.city-toggle__text")
     WebElement cityTitle;
-    @FindBy(css = "a.button.button--large.side-menu__button")
+    @FindBy(css = "a.side-menu__button[href*='help']")
     WebElement referenceCenter;
 
     public PageToggledSideMenu(WebDriver driver) {

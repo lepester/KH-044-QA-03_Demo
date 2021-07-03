@@ -3,7 +3,8 @@ package pageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class RozetkaReferenceCenterPage extends BasePage{
     String query = "доставка";
@@ -16,10 +17,14 @@ public class RozetkaReferenceCenterPage extends BasePage{
         super(driver);
     }
 
-    public RozetkaHelperCenter searchForReference() {
+    public RozetkaReferenceCenterSearchResults searchForReference() {
         inputSupport.clear();
         inputSupport.sendKeys(query);
         buttonSearchSupport.click();
-        return new RozetkaHelperCenter(driver);
+        return new RozetkaReferenceCenterSearchResults(driver);
+    }
+
+    public String getReferenceQuery() {
+        return query;
     }
 }
