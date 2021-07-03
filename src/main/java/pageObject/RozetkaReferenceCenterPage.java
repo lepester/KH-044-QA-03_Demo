@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class RozetkaReferenceCenterPage extends BasePage{
         super(driver);
     }
 
+    @Step("Search for reference to get help")
     public RozetkaReferenceCenterSearchResults searchForReference() {
         inputSupport.clear();
         inputSupport.sendKeys(query);

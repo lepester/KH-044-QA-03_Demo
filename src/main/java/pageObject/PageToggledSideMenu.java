@@ -39,6 +39,7 @@ public class PageToggledSideMenu extends BasePage {
         return city;
     }
 
+    @Step("Click button to get to reference center page")
     public RozetkaReferenceCenterPage openReferenceCenter() {
         referenceCenter.click();
         return new RozetkaReferenceCenterPage(driver);

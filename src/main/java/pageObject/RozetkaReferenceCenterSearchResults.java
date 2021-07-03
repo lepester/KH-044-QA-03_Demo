@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ public class RozetkaReferenceCenterSearchResults extends BasePage{
         super(driver);
     }
 
+    @Step("Check if results on reference center page match query")
     public boolean getReferenceSearchResult(String query) {
         boolean result = referenceResult.stream()
                 .map(element -> element.getText())
