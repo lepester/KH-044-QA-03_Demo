@@ -1,6 +1,8 @@
 package testClasses;
 
 import io.qameta.allure.Description;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravelHomePage;
 
@@ -14,5 +16,6 @@ public class RozetkaTravelSortByPriceTest extends BaseTest {
                 .closeSplashWindow()
                 .findTour()
                 .getPricesBySort();
+        Assert.assertTrue(driver.findElement(By.cssSelector("span.s-result-item__price-amount")).isDisplayed());
     }
 }

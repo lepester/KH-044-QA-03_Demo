@@ -21,22 +21,11 @@ public class RozetkaTravelSearchResultsPage extends BasePage {
         visibilityWaiter(firstProduct);
     }
 
-    @Step("Find a product by price sort")
+    @Step("Click on 'Сортировать по Цене' button" )
     public RozetkaTravelSearchResultsPage getPricesBySort() {
-        firstProduct.isDisplayed();
-        List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
-        String[] str = new String[5];
-        int size = str.length;
-        for (int i = 0; i < size; i++) {
-            str[i] = prices.get(i).getText().replace(" ", "");
-        }
-        int[] pricesArr = new int[size];
-        for (int i = 0; i < size; i++) {
-            pricesArr[i] = Integer.parseInt(str[i]);
-        }
-        for (int i = 0; i < pricesArr.length - 1; i++) {
-            Assert.assertTrue(pricesArr[i] <= pricesArr[i + 1]);
-        }
+        visibilityWaiter(firstProduct);
+        submitPrice.click();
+        visibilityWaiter(firstProduct);
         return this;
     }
 }
