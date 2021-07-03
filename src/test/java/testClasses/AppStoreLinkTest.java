@@ -8,6 +8,7 @@ public class AppStoreLinkTest extends BaseTest {
     @Test
     @Description("Get to the Rozetka Shop and check mobile app link for Apple Iphone")
     public void appStoreLinkTest() {
+        driver.get(rozetkaHomePageLink);
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage.openAppleStore();
     }

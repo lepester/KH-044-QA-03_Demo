@@ -9,6 +9,7 @@ public class GooglePlayLinkTest extends BaseTest {
     @Description("Get to the Rozetka Shop and check mobile app link for Android")
     public void googlePlayLink() {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
+        driver.get(rozetkaHomePageLink);
         rozetkaHomePage.openGooglePlay();
     }
 }
