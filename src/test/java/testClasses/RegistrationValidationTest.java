@@ -11,6 +11,7 @@ public class RegistrationValidationTest extends BaseTest{
     @Test
     @Description("Get to the Register and enter incorrect data")
     public void incorrectInput(){
+        driver.get(rozetkaHomePageLink);
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .goToLoginPage()
