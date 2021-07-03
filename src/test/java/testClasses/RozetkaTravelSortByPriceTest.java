@@ -1,10 +1,12 @@
 package testClasses;
 
 import io.qameta.allure.Description;
-import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravelHomePage;
+
+import java.util.List;
 
 public class RozetkaTravelSortByPriceTest extends BaseTest {
     @Test
@@ -12,10 +14,12 @@ public class RozetkaTravelSortByPriceTest extends BaseTest {
     public void sortByPrice() {
         driver.get(rozetkaTravelLink);
         RozetkaTravelHomePage rozetkaTravelHomePage = new RozetkaTravelHomePage(driver);
-        rozetkaTravelHomePage
-                .closeSplashWindow()
+        List<Integer> travelPrices =  rozetkaTravelHomePage.closeSplashWindow()
                 .findTour()
                 .getPricesBySort();
-        Assert.assertTrue(driver.findElement(By.cssSelector("span.s-result-item__price-amount")).isDisplayed());
+
+        for (Integer price : travelPrices) {
+            Assert.assertTrue(2000 <= price && price <= 400000);
+        }
     }
 }
