@@ -25,7 +25,7 @@ public class RegisterPage extends BasePage{
     }
 
     @Step("Insert incorrect user data")
-    public void inputIncorrectData(String name, String surname, String phone, String email, String password){
+    public void dataParameters(String name, String surname, String phone, String email, String password){
         userName.sendKeys(name);
         userSurname.sendKeys(surname);
         userPhone.sendKeys(phone);
