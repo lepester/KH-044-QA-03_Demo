@@ -11,7 +11,7 @@ import org.testng.annotations.Listeners;
 @Listeners(ListenerTest.class)
 public class BaseTest {
 
-    protected final String rozetkaProductsPageLink = "https://hard.rozetka.com.ua/monitors/c80089/";
+    protected final String rozetkaHomePageLink = "https://rozetka.com.ua/";
     protected WebDriver driver;
     protected DriverManager driverManager;
 
