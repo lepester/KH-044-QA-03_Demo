@@ -8,7 +8,7 @@ import pageObject.CartPage;
 import pageObject.RozetkaHomePage;
 import pageObject.ProductPage;
 
-public class addProductIntoCart extends BaseTest {
+public class AddProductIntoCart extends BaseTest {
 
     @DataProvider(name = "searchProduct")
     public Object[][] searchProduct() {

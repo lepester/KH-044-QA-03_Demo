@@ -27,8 +27,8 @@ public class CartPage extends BasePage{
         return title;
     }
 
-    public CartPage closeCartPage() {
+    public ProductPage closeCartPage() {
         closeCartPageButton.click();
-        return new CartPage(driver);
+        return new ProductPage(driver);
     }
 }
