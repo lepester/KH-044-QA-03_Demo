@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PageToggledSideMenu extends BasePage {
+    @FindBy(css = "div.side-menu rz-lang a.lang__link")
+    WebElement anotherLanguage;
     @FindBy(xpath = "//button[contains(@class,'city-toggle')]")
     WebElement cityButton;
     @FindBy(css = "span.city-toggle__text")
@@ -14,6 +16,13 @@ public class PageToggledSideMenu extends BasePage {
 
     public PageToggledSideMenu(WebDriver driver) {
         super(driver);
+    }
+
+    @Step("Click button of the language for switching page to another language")
+    public RozetkaHomePage changeLanguage() {
+        explicitWait.until(ExpectedConditions.visibilityOfAllElements(anotherLanguage));
+        anotherLanguage.click();
+        return new RozetkaHomePage(driver);
     }
 
     @Step("Click button for switching to another location (city)")
