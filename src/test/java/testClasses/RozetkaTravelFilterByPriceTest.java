@@ -1,8 +1,12 @@
 package testClasses;
 
 import io.qameta.allure.Description;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.RozetkaTravelHomePage;
+
+import java.util.List;
 
 public class RozetkaTravelFilterByPriceTest extends BaseTest {
 
@@ -11,11 +15,14 @@ public class RozetkaTravelFilterByPriceTest extends BaseTest {
     public void filterByPrice() {
         driver.get(rozetkaTravelLink);
         RozetkaTravelHomePage rozetkaTravelHomePage = new RozetkaTravelHomePage(driver);
-        rozetkaTravelHomePage
-                .closeSplashWindow()
+        List<Integer> travelPrices = rozetkaTravelHomePage.closeSplashWindow()
                 .findTour()
-                .minPrice("16500")
+                .minPrice("10000")
                 .maxPrice("21000")
                 .getPricesByFilter();
+
+        for (Integer price:travelPrices) {
+            Assert.assertTrue(10000 <= price && price <= 21000);
+        }
     }
 }

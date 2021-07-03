@@ -8,14 +8,15 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RozetkaTravelSearchResultsPage extends BasePage {
 
     @FindBy(css = "div.s-result-item")
     private WebElement firstProduct;
-    @FindBy(xpath = "(//input[@type='number']) [1]")
+    @FindBy(xpath = "//form[contains(@class,'price-filter')]//input[1]")
     private WebElement setMinPrice;
-    @FindBy(xpath = "(//input[@type='number']) [2]")
+    @FindBy(xpath = "//form[contains(@class,'price-filter')]//input[2]")
     private WebElement setMaxPrice;
     @FindBy(css = "button.price-filter__submit")
     private WebElement submitPrice;
@@ -44,21 +45,13 @@ public class RozetkaTravelSearchResultsPage extends BasePage {
     }
 
     @Step("Find a product by price filter")
-    public RozetkaTravelSearchResultsPage getPricesByFilter() {
+    public List<Integer> getPricesByFilter() {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
+        List<Integer> travelPrices = prices.stream()
+                    .map(price -> Integer.parseInt(price.getText().replaceAll("\\s+", "")))
+                    .collect(Collectors.toList());
 
-        String[] str = new String[5];
-        int size = str.length;
-        for (int i = 0; i < size; i++) {
-            str[i] = prices.get(i).getText().replace(" ", "");
-        }
-        int[] pricesArr = new int [size];
-        for (int i = 0; i < size; i++) {
-            pricesArr[i] = Integer.parseInt(str[i]);
-            Assert.assertTrue(10000 < pricesArr[i]);
-            Assert.assertTrue(pricesArr[i] < 21000);
-        }
-        return this;
+        return travelPrices;
     }
 }
