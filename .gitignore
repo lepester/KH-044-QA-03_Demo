@@ -35,4 +35,5 @@ target/
 
 # Allure Reports
 .allure
-/target
+target/
+allure-results
