@@ -10,6 +10,7 @@ public class SwitchLanguage extends BaseTest {
     @Test(groups = {"rozetkaTest"})
     @Description("switching language of the web-site to another one")
     public void switchLanguage() {
+        driver.get(rozetkaHomePageLink);
         RozetkaHomePage homePage = new RozetkaHomePage(driver);
         String oldSearchButtonText = homePage.getHeader()
                 .getSearchButtonText();
