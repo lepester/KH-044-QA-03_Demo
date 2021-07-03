@@ -5,21 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RozetkaDisplaysPage extends BasePage{
-
+public class RozetkaReferenceCenterPage extends BasePage{
+    String query = "доставка";
     @FindBy(css = "input#query")
-    private WebElement inputSupport;
+    WebElement inputSupport;
     @FindBy(name = "commit")
-    private WebElement buttonSearchSupport;
+    WebElement buttonSearchSupport;
 
-    public RozetkaDisplaysPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public RozetkaReferenceCenterPage(WebDriver driver) {
+        super(driver);
     }
 
-    public RozetkaHelperCenter openPageHelper() {
+    public RozetkaHelperCenter searchForReference() {
         inputSupport.clear();
-        inputSupport.sendKeys("доставка");
+        inputSupport.sendKeys(query);
         buttonSearchSupport.click();
         return new RozetkaHelperCenter(driver);
     }

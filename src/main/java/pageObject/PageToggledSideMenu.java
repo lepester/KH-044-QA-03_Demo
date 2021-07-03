@@ -13,6 +13,8 @@ public class PageToggledSideMenu extends BasePage {
     WebElement cityButton;
     @FindBy(css = "span.city-toggle__text")
     WebElement cityTitle;
+    @FindBy(css = "a.button.button--large.side-menu__button")
+    WebElement referenceCenter;
 
     public PageToggledSideMenu(WebDriver driver) {
         super(driver);
@@ -35,5 +37,10 @@ public class PageToggledSideMenu extends BasePage {
     public String getCurrentCity() {
         String city = cityTitle.getText();
         return city;
+    }
+
+    public RozetkaReferenceCenterPage openReferenceCenter() {
+        referenceCenter.click();
+        return new RozetkaReferenceCenterPage(driver);
     }
 }
