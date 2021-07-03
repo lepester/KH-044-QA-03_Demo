@@ -16,24 +16,20 @@ public class BasePage {
         explicitWait = new WebDriverWait(driver, 15);
     }
 
-    public WebDriverWait explicitWait() {
-        return new WebDriverWait(driver, 15);
+    public void clickableWaiter(WebElement webElement) {
+        explicitWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public void clickableWaiter(WebElement wait) {
-        explicitWait().until(ExpectedConditions.elementToBeClickable(wait));
+    public void visibilityWaiter(WebElement webElement) {
+        explicitWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    public void visibilityWaiter(WebElement wait) {
-        explicitWait().until(ExpectedConditions.visibilityOf(wait));
+    public void invisibilityWaiter(WebElement webElement) {
+        explicitWait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
-    public void invisibilityWaiter(WebElement wait) {
-        explicitWait().until(ExpectedConditions.invisibilityOf(wait));
-    }
-
-    public void redrawnWaiter(WebElement wait){
-        explicitWait().until(ExpectedConditions.stalenessOf(wait));
+    public void redrawnWaiter(WebElement webElement){
+        explicitWait.until(ExpectedConditions.stalenessOf(webElement));
     }
 }
 
