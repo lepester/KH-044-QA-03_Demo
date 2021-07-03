@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObject.RozetkaHomePage;
 
-public class switchLocation extends BaseTest {
+public class SwitchLocation extends BaseTest {
 
     @DataProvider(name = "searchCity")
     public Object[][] searchCity() {
@@ -19,7 +19,7 @@ public class switchLocation extends BaseTest {
     @Test(dataProvider = "searchCity", groups = {"rozetkaTest"})
     @Description("switching location (city) to another one")
     public void switchCity(String city) {
-        driver.get(url);
+        driver.get(rozetkaHomePageLink);
         RozetkaHomePage homePage = new RozetkaHomePage(this.driver);
         String currentCity = homePage.getHeader()
                 .openSideMenu()
