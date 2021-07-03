@@ -23,8 +23,9 @@
 hs_err_pid*
 
 # Cache files
-.target/
+target/
 .idea/
+.allure
 
 # IntelijIdea cache files
 *.iml
