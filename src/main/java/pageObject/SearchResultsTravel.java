@@ -93,3 +93,4 @@ public class SearchResultsTravel extends BasePage {
         return this;
     }
 }
+

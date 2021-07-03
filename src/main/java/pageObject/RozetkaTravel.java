@@ -30,8 +30,6 @@ public class RozetkaTravel extends BasePage {
     @FindBy(css = "span.main-search__counter-button_plus")
     private WebElement plusButton;
 
-
-
     public RozetkaTravel(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -42,17 +40,20 @@ public class RozetkaTravel extends BasePage {
         driver.get("https://rozetka.travel/");
         return this;
     }
+
     @Step("Close splash window")
     public RozetkaTravel closeSplashWindow() {
         visibilityWaiter(closeButton);
         closeButton.click();
         return this;
     }
+
     @Step("Choose city departure")
     public RozetkaTravel cityDeparture() {
         city.click();
         return this;
     }
+
     @Step("Choose city arrival")
     public RozetkaTravel cityArrival(String input) {
         countryArrival.click();
@@ -69,6 +70,7 @@ public class RozetkaTravel extends BasePage {
         noFood.click();
         return this;
     }
+
     @Step("Choose date of departure")
     public RozetkaTravel dateDeparture() {
         clickableWaiter(searchButton);
@@ -77,10 +79,10 @@ public class RozetkaTravel extends BasePage {
         plusButton.click();
         return this;
     }
+
     @Step("Click 'find' button")
     public SearchResultsTravel findTour() {
         searchButton.click();
         return new SearchResultsTravel(driver);
     }
-
 }

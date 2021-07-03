@@ -16,6 +16,6 @@ public class FindTour extends BaseTest {
                 .dateDeparture()
                 .foodChoice()
                 .findTour();
-
     }
 }
+
