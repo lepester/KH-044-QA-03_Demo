@@ -8,10 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class CartPage extends BasePage{
-    @FindBy(xpath = "//a[contains(@class,'cart-receipt__submit')]")
-    WebElement productSubmitButton;
-    @FindBy(xpath = "//rz-checkout-order")
-    WebElement clientForm;
     @FindBy(css = "a.cart-product__title")
     List<WebElement> productTitle;
     @FindBy(css = "button.modal__close")
@@ -22,7 +18,7 @@ public class CartPage extends BasePage{
     }
 
     public String getTitleOfProductInShoppingCart() {
-        explicitWait.until(ExpectedConditions.visibilityOfAllElements(productSubmitButton));
+        explicitWait.until(ExpectedConditions.visibilityOfAllElements(productTitle));
         String title = productTitle.get(0).getText();
         return title;
     }
