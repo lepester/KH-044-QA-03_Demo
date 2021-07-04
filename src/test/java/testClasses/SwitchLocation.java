@@ -12,7 +12,7 @@ public class SwitchLocation extends BaseTest {
     public Object[][] searchCity() {
         return new Object[][] {
                 {"Киев"},
-                {"Львов "}
+                {"Львов"}
         };
     }
 
