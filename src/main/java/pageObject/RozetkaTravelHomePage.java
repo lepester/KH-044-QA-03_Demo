@@ -66,7 +66,7 @@ public class RozetkaTravelHomePage extends BasePage {
     }
 
     @Step("Choose food category as 'Всё включено'")
-    public RozetkaTravelHomePage selectMeals(String meal) {
+    public RozetkaTravelHomePage selectMeals() {
         clickableWaiter(meals);
         actions().moveToElement(meals).click().perform();
         visibilityWaiter(allInclusive);
