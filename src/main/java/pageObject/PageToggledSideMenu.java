@@ -35,6 +35,7 @@ public class PageToggledSideMenu extends BasePage {
     }
 
     public String getCurrentCity() {
+        explicitWait.until(ExpectedConditions.visibilityOfAllElements(cityTitle));
         String city = cityTitle.getText();
         return city;
     }
