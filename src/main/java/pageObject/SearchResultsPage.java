@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class SearchResultsPage extends BasePage {
 
     @Step("Click first product for switching to its page")
     public ProductPage clickFirstProduct() {
+        explicitWait.until(ExpectedConditions.visibilityOfAllElements(goodsCatalog));
         goodsCatalog.get(0).click();
         return new ProductPage(driver);
     }
