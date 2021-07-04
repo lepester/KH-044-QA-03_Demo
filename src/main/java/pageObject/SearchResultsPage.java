@@ -27,7 +27,6 @@ public class SearchResultsPage extends BasePage {
         Select select = new Select(listBox);
         try {
             select.selectByValue(value);
-            clickableWaiter(goods);
         }
         catch (StaleElementReferenceException e){
             e.printStackTrace();

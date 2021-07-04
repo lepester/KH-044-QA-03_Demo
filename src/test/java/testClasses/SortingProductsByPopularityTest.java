@@ -10,13 +10,17 @@ public class SortingProductsByPopularityTest extends BaseTest {
     @Test
     @Description("Get to the section of products and simply click on 'sort by popularity' button")
     public void sortingByPopularityTest() {
+
+        String popularityValue = "3: popularity";
+        String popularityPartialLink = "sort=popularity";
+
         driver.get(rozetkaHomePageLink);
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort("3: popularity");
+                .settingsSort(popularityValue);
 
         String currentURL = driver.getCurrentUrl();
-        Assert.assertTrue(currentURL.contains("sort=popularity"));
+        Assert.assertTrue(currentURL.contains(popularityPartialLink));
     }
 }

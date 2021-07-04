@@ -10,13 +10,17 @@ public class SortingProductsByDescTest extends BaseTest {
     @Test
     @Description("Get to the section of products and simply click on 'sort by descending' button")
     public void sortingByDescTest() {
+
+        String expensiveValue = "2: expensive";
+        String expensivePartialLink = "sort=expensive";
+
         driver.get(rozetkaHomePageLink);
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort("2: expensive");
+                .settingsSort(expensiveValue);
 
         String currentURL = driver.getCurrentUrl();
-        Assert.assertTrue(currentURL.contains("sort=expensive"));
+        Assert.assertTrue(currentURL.contains(expensivePartialLink));
     }
 }

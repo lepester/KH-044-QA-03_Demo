@@ -10,13 +10,17 @@ public class SortingProductsByAscTest extends BaseTest {
     @Test
     @Description("Get to the section of products and simply click on 'sort by ascending' button")
     public void sortingByAscTest() {
+
+        String cheapValue = "1: cheap";
+        String cheapPartialLink = "sort=cheap";
+
         driver.get(rozetkaHomePageLink);
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort("1: cheap");
+                .settingsSort(cheapValue);
 
         String currentURL = driver.getCurrentUrl();
-        Assert.assertTrue(currentURL.contains("sort=cheap"));
+        Assert.assertTrue(currentURL.contains(cheapPartialLink));
     }
 }
