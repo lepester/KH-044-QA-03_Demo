@@ -17,7 +17,7 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public String getTitleOfProductInShoppingCart() {
+    public String getTitleOfFirstProductInShoppingCart() {
         explicitWait.until(ExpectedConditions.visibilityOfAllElements(productTitle));
         String title = productTitle.get(0).getText();
         return title;

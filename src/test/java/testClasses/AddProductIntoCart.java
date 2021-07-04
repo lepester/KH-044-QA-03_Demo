@@ -30,7 +30,7 @@ public class AddProductIntoCart extends BaseTest {
         Assert.assertTrue(actualProductTitle.contains(searchText),
                 "The product`s title does not contain your search query.");
         CartPage cartPage = productPage.buyProduct();
-        String productTitleInCart = cartPage.getTitleOfProductInShoppingCart();
+        String productTitleInCart = cartPage.getTitleOfFirstProductInShoppingCart();
         Assert.assertTrue(productTitleInCart.contains(actualProductTitle),
                 "The product was not added into the shopping cart.");
         cartPage.closeCartPage();
