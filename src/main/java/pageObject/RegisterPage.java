@@ -24,8 +24,8 @@ public class RegisterPage extends BasePage{
         super(driver);
     }
 
-    @Step("Insert incorrect user data")
-    public void dataParameters(String name, String surname, String phone, String email, String password){
+    @Step("Get incorrect user data and insert them into specific fields")
+    public void getIncorrectUserDataParameters(String name, String surname, String phone, String email, String password){
         userName.sendKeys(name);
         userSurname.sendKeys(surname);
         userPhone.sendKeys(phone);
@@ -33,7 +33,7 @@ public class RegisterPage extends BasePage{
         userPassword.sendKeys(password);
     }
 
-    public WebElement getValidationMsg(){
-        return validationMsg;
+    public boolean isValidationMsgPresent(){
+        return validationMsg.isDisplayed();
     }
 }
