@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObject.RozetkaHomePage;
 
-public class checkDeviceExchangeCost extends BaseTest {
+public class CheckDeviceExchangeCost extends BaseTest {
 
     @DataProvider(name = "checkDevicePrice")
     public Object[][] checkDevicePrice() {
@@ -21,7 +21,7 @@ public class checkDeviceExchangeCost extends BaseTest {
     @Description("checking price of device for exchange")
     @Link("https://rozetka.com.ua/pages/obmin/")
     public void checkDeviceExchangePrice(String deviceType, String deviceProducer, String deviceModel, int deviceCost) {
-        driver.get(url);
+        driver.get(rozetkaHomePageLink);
         RozetkaHomePage homePage = new RozetkaHomePage(this.driver);
         int actualDeviceCost = homePage.openRozetkaObminPage()
                 .inputDeviceType(deviceType)
