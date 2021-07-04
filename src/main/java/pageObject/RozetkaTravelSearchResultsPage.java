@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,13 +24,7 @@ public class RozetkaTravelSearchResultsPage extends BasePage {
         visibilityWaiter(firstProduct);
     }
 
-    @Step("Click on 'Сортировать по Цене' button" )
-    public List<Integer> getPricesBySort() {
-        firstProduct.isDisplayed();
-        List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
-        List<Integer> travelPrices = prices.stream()
-                .map(price -> Integer.parseInt(price.getText().replaceAll("\\s+", "")))
-                .collect(Collectors.toList());
+
     @Step("Set minimal price of tour")
     public RozetkaTravelSearchResultsPage minPrice(String minInput) {
         clickableWaiter(setMinPrice);
@@ -56,9 +48,18 @@ public class RozetkaTravelSearchResultsPage extends BasePage {
         firstProduct.isDisplayed();
         List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
         List<Integer> travelPrices = prices.stream()
-                    .map(price -> Integer.parseInt(price.getText().replaceAll("\\s+", "")))
-                    .collect(Collectors.toList());
+                .map(price -> Integer.parseInt(price.getText().replaceAll("\\s+", "")))
+                .collect(Collectors.toList());
+        return travelPrices;
+    }
 
+    @Step("Click on 'Сортировать по Цене' button" )
+    public List<Integer> getPricesBySort() {
+        firstProduct.isDisplayed();
+        List<WebElement> prices = driver.findElements(By.xpath("(//span[@class='s-result-item__price-amount']) [position()>0 and position()<=5]"));
+        List<Integer> travelPrices = prices.stream()
+                .map(price -> Integer.parseInt(price.getText().replaceAll("\\s+", "")))
+                .collect(Collectors.toList());
         return travelPrices;
     }
 }
