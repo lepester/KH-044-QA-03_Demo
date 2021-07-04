@@ -19,16 +19,13 @@ public class SearchResultsPage extends BasePage {
         super(driver);
     }
 
-    @Step("Choose all sellers in filter")
-    public void chooseAllSellersInFilter() {
-        visibilityWaiter(sellers);
+    @Step("Choose seller in filter")
+    public void chooseSellerInFilter(String seller) {
+        clickableWaiter(sellers);
         List<WebElement> results = driver.findElements(By.cssSelector(".checkbox-filter__item.ng-star-inserted"));
         for (WebElement checkBox : results) {
-            if (checkBox.getText().contains("Rozetka")) {
-                clickableWaiter(checkBox);
-                checkBox.click();
-            } else if (checkBox.getText().contains("Другие продавцы")) {
-                clickableWaiter(checkBox);
+            if (checkBox.getText().contains(seller)) {
+                clickableWaiter(sellers);
                 checkBox.click();
                 break;
             }
