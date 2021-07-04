@@ -18,7 +18,7 @@ public class SortingProductsByAscTest extends BaseTest {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort(cheapValue);
+                .sortProductsByValue(cheapValue);
 
         String currentURL = driver.getCurrentUrl();
         Assert.assertTrue(currentURL.contains(cheapPartialLink));

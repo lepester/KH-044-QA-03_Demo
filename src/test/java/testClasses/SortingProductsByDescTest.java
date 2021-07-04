@@ -18,7 +18,7 @@ public class SortingProductsByDescTest extends BaseTest {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort(expensiveValue);
+                .sortProductsByValue(expensiveValue);
 
         String currentURL = driver.getCurrentUrl();
         Assert.assertTrue(currentURL.contains(expensivePartialLink));

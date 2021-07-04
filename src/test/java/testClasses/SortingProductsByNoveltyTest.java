@@ -18,7 +18,7 @@ public class SortingProductsByNoveltyTest extends BaseTest {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort(noveltyValue);
+                .sortProductsByValue(noveltyValue);
 
         String currentURL = driver.getCurrentUrl();
         Assert.assertTrue(currentURL.contains(noveltyPartialLink));

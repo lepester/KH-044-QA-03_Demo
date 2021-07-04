@@ -18,7 +18,7 @@ public class SortingProductsByPopularityTest extends BaseTest {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort(popularityValue);
+                .sortProductsByValue(popularityValue);
 
         String currentURL = driver.getCurrentUrl();
         Assert.assertTrue(currentURL.contains(popularityPartialLink));

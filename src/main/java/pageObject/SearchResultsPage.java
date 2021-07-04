@@ -14,17 +14,18 @@ public class SearchResultsPage extends BasePage {
     private WebElement sort;
     @FindBy(css = ".goods-tile__picture.ng-star-inserted")
     private WebElement goods;
+    @FindBy(xpath = "//select")
+    private WebElement dropDownList;
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
     }
 
     @Step("Sort products by value")
-    public void settingsSort(String value){
+    public void sortProductsByValue(String value){
         clickableWaiter(goods);
         sort.click();
-        WebElement listBox = driver.findElement(By.xpath("//select"));
-        Select select = new Select(listBox);
+        Select select = new Select(dropDownList);
         try {
             select.selectByValue(value);
         }

@@ -18,7 +18,7 @@ public class SortingProductsByActionTest extends BaseTest {
         RozetkaHomePage rozetkaHomePage = new RozetkaHomePage(driver);
         rozetkaHomePage
                 .chooseMonitorsFromCatalog()
-                .settingsSort(actionValue);
+                .sortProductsByValue(actionValue);
 
         String currentURL = driver.getCurrentUrl();
         Assert.assertTrue(currentURL.contains(actionPartialLink));
