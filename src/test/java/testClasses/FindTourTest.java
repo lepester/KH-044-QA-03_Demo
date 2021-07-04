@@ -15,10 +15,10 @@ public class FindTourTest extends BaseTest {
         RozetkaTravelHomePage rozetkaTravelHomePage = new RozetkaTravelHomePage(driver);
         rozetkaTravelHomePage
                 .closeSplashWindow()
-                .cityDeparture()
-                .cityArrival("Турция")
-                .dateDeparture()
-                .mealChoice()
+                .selectCityDeparture("Харьков")
+                .selectCountryArrival("Турция")
+                .selectdateDeparture()
+                .selectMeals("Все включено")
                 .findTour();
         Assert.assertTrue(driver.findElement(By.cssSelector("div.s-result-item")).isDisplayed());
     }

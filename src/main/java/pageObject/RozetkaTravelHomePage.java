@@ -1,9 +1,12 @@
 package pageObject;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class RozetkaTravelHomePage extends BasePage {
 
@@ -16,8 +19,6 @@ public class RozetkaTravelHomePage extends BasePage {
 
     @FindBy(xpath = "//i[@class='select-icon main-search__icon-departure']")
     private WebElement cityDeparture;
-    @FindBy(xpath = "//div[@id='83f0378c-be12-45f3-a023-f412858caddc']")
-    private WebElement cityKiev;
     @FindBy(css = "input.button")
     private WebElement searchButton;
 
@@ -42,23 +43,30 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose city departure as 'Киев'")
-    public RozetkaTravelHomePage cityDeparture() {
+    @Step("Choose city departure as 'Харьков'")
+    public RozetkaTravelHomePage selectCityDeparture(String city) {
         actions().moveToElement(cityDeparture).click().perform();
-        cityKiev.click();
+        List<WebElement> cities = driver.findElements(By.xpath("//*[@id]/span"));
+        for (WebElement span : cities) {
+            if (span.getText().contains(city)) {
+                clickableWaiter(span);
+                actions().moveToElement(span).click().perform();
+                break;
+            }
+        }
         return this;
     }
 
-    @Step("Choose city arrival")
-    public RozetkaTravelHomePage cityArrival(String input) {
+    @Step("Choose city arrival as 'Турция'")
+    public RozetkaTravelHomePage selectCountryArrival(String country) {
         countryArrival.click();
-        countryArrival.sendKeys(input);
+        countryArrival.sendKeys(country);
         firstCountry.click();
         return this;
     }
 
     @Step("Choose food category as 'Всё включено'")
-    public RozetkaTravelHomePage mealChoice() {
+    public RozetkaTravelHomePage selectMeals(String meal) {
         clickableWaiter(meals);
         actions().moveToElement(meals).click().perform();
         visibilityWaiter(allInclusive);
@@ -67,7 +75,7 @@ public class RozetkaTravelHomePage extends BasePage {
     }
 
     @Step("Choose date of departure as 'Сегодняшняя дата + 4 дня'")
-    public RozetkaTravelHomePage dateDeparture() {
+    public RozetkaTravelHomePage selectdateDeparture() {
         clickableWaiter(searchButton);
         actions().moveToElement(date).click().perform();
         clickableWaiter(plusButton);
