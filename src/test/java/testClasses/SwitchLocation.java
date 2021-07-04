@@ -25,6 +25,7 @@ public class SwitchLocation extends BaseTest {
                 .openSideMenu()
                 .clickCityButton()
                 .searchCity(city)
+                .clickFirstCityInList()
                 .submitCity()
                 .getHeader()
                 .openSideMenu()
