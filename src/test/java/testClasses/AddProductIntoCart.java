@@ -21,7 +21,7 @@ public class AddProductIntoCart extends BaseTest {
     @Test(dataProvider = "searchProduct", groups = {"rozetkaTest", "buyingProductTest"})
     @Description("searching and adding products to the shopping cart")
     public void buyProduct(String searchText) {
-        driver.get(url);
+        driver.get(rozetkaTravelLink);
         RozetkaHomePage homePage = new RozetkaHomePage(driver);
         ProductPage productPage = homePage.getHeader()
                 .searchProduct(searchText)
