@@ -72,7 +72,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose date of departure")
+    @Step("Choose date of departure today's date and plus four days")
     public RozetkaTravelHomePage selectFourDaysDate() {
         clickableWaiter(searchButton);
         actions().moveToElement(date).click().perform();
@@ -81,7 +81,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Click 'find' button")
+    @Step("Click 'Найти' button")
     public RozetkaTravelSearchResultsPage findTour() {
         searchButton.click();
         return new RozetkaTravelSearchResultsPage(driver);
