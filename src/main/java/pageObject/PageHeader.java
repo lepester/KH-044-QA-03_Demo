@@ -10,6 +10,8 @@ public class PageHeader extends BasePage {
     WebElement searchButton;
     @FindBy(css = "button>svg>use[href*='icon-menu']")
     WebElement sideMenuButton;
+    @FindBy(id = "fat-menu")
+    WebElement categoryButton;
 
     public PageHeader(WebDriver driver) {
         super(driver);
@@ -19,6 +21,12 @@ public class PageHeader extends BasePage {
     public PageToggledSideMenu openSideMenu() {
         sideMenuButton.click();
         return new PageToggledSideMenu(driver);
+    }
+
+    @Step("Open category catalog")
+    public CategoryPage openCategoryCatalog() {
+        categoryButton.click();
+        return new CategoryPage(driver);
     }
 
     public String getSearchButtonText() {
