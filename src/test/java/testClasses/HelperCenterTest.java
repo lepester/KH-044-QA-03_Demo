@@ -8,6 +8,7 @@ import pageObject.RozetkaHomePage;
 import pageObject.RozetkaReferenceCenterPage;
 
 public class HelperCenterTest extends BaseTest {
+    private String query = "доставка";
 
     @Description("Search for references in reference center to get help")
     @Link("https://help.rozetka.com.ua/hc/")
@@ -18,9 +19,8 @@ public class HelperCenterTest extends BaseTest {
         RozetkaReferenceCenterPage rozetkaReferenceCenterPage = homePage.getHeader()
                 .openSideMenu()
                 .openReferenceCenter();
-        String referenceQuery = rozetkaReferenceCenterPage.getReferenceQuery();
-        boolean ifReferenceSearchResultsContainQuery = rozetkaReferenceCenterPage.searchForReference()
-                .getReferenceSearchResult(referenceQuery);
+        boolean ifReferenceSearchResultsContainQuery = rozetkaReferenceCenterPage.searchForReference(query)
+                .getReferenceSearchResult(query);
         Assert.assertTrue(ifReferenceSearchResultsContainQuery);
     }
 }

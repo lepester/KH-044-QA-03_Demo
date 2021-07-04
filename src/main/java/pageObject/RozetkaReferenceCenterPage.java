@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class RozetkaReferenceCenterPage extends BasePage{
-    String query = "доставка";
     @FindBy(css = "input#query")
     WebElement inputSupport;
     @FindBy(name = "commit")
@@ -19,14 +18,10 @@ public class RozetkaReferenceCenterPage extends BasePage{
     }
 
     @Step("Search for reference to get help")
-    public RozetkaReferenceCenterSearchResults searchForReference() {
+    public RozetkaReferenceCenterSearchResults searchForReference(String query) {
         inputSupport.clear();
         inputSupport.sendKeys(query);
         buttonSearchSupport.click();
         return new RozetkaReferenceCenterSearchResults(driver);
-    }
-
-    public String getReferenceQuery() {
-        return query;
     }
 }
