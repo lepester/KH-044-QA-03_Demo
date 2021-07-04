@@ -41,7 +41,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose city departure as 'Харьков'")
+    @Step("Choose city departure as {city}")
     public RozetkaTravelHomePage selectCityDeparture(String city) {
         actions().moveToElement(cityDeparture).click().perform();
         List<WebElement> cities = driver.findElements(By.xpath("//*[@id]/span"));
@@ -55,7 +55,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose city arrival as 'Турция'")
+    @Step("Choose country arrival as {country}")
     public RozetkaTravelHomePage selectCountryArrival(String country) {
         countryArrival.click();
         countryArrival.sendKeys(country);
@@ -63,7 +63,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose food category as 'Всё включено'")
+    @Step("Choose food category")
     public RozetkaTravelHomePage selectMeals() {
         clickableWaiter(meals);
         actions().moveToElement(meals).click().perform();
@@ -72,7 +72,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose date of departure as 'Сегодняшняя дата + 4 дня'")
+    @Step("Choose date of departure")
     public RozetkaTravelHomePage selectFourDaysDate() {
         clickableWaiter(searchButton);
         actions().moveToElement(date).click().perform();
