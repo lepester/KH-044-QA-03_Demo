@@ -24,8 +24,6 @@ public class RozetkaTravelHomePage extends BasePage {
 
     @FindBy(css = "i.main-search__icon-meals")
     private WebElement meals;
-    @FindBy(xpath = "//div[@id='c098d41b-99c4-494b-8766-276b3aa6d773']")
-    private WebElement allInclusive;
 
     @FindBy(css = "i.main-search__icon-calendar")
     private WebElement date;
@@ -69,13 +67,13 @@ public class RozetkaTravelHomePage extends BasePage {
     public RozetkaTravelHomePage selectMeals() {
         clickableWaiter(meals);
         actions().moveToElement(meals).click().perform();
-        visibilityWaiter(allInclusive);
-        allInclusive.click();
+        List<WebElement> mealType = driver.findElements(By.xpath("//*[@id]/span"));
+        mealType.get(8).click();
         return this;
     }
 
     @Step("Choose date of departure as 'Сегодняшняя дата + 4 дня'")
-    public RozetkaTravelHomePage selectdateDeparture() {
+    public RozetkaTravelHomePage selectDateDeparture() {
         clickableWaiter(searchButton);
         actions().moveToElement(date).click().perform();
         clickableWaiter(plusButton);
