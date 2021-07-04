@@ -10,15 +10,8 @@ import java.util.List;
 
 public class RozetkaTravelHomePage extends BasePage {
 
-    @FindBy(css = "input.select")
-    private WebElement countryArrival;
-    @FindBy(css = "div.select-dropdown__item")
-    private WebElement firstCountry;
     @FindBy(css = "div.j-modal__close")
     private WebElement closeButton;
-
-    @FindBy(xpath = "//i[@class='select-icon main-search__icon-departure']")
-    private WebElement cityDeparture;
     @FindBy(css = "input.button")
     private WebElement searchButton;
 
@@ -41,6 +34,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
+    @Step("Click 'find' button")
     @Step("Choose city departure as {city}")
     public RozetkaTravelHomePage selectCityDeparture(String city) {
         actions().moveToElement(cityDeparture).click().perform();

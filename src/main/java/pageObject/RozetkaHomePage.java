@@ -17,6 +17,10 @@ public class RozetkaHomePage extends BasePage {
     private WebElement iphoneApp;
     @FindBy(css = "body")
     private WebElement body;
+    @FindBy(css = "button.menu__toggle")
+    private WebElement catalog;
+    @FindBy(xpath = "//a[@href='https://hard.rozetka.com.ua/monitors/c80089/']")
+    private WebElement displaySection;
 
     public RozetkaHomePage(WebDriver driver) {
         super(driver);
@@ -42,5 +46,18 @@ public class RozetkaHomePage extends BasePage {
         ArrayList<String> tab = new ArrayList<String> (driver.getWindowHandles());
         driver.switchTo().window(tab.get(1));
         return new AppStorePage(driver);
+    }
+
+    @Step("Open https://rozetka.com.ua/pages/obmin/ web-site for determination of device`s exchange cost")
+    public RozetkaObminPage openRozetkaObminPage() {
+        driver.get("https://rozetka.com.ua/pages/obmin/");
+        return new RozetkaObminPage(driver);
+    }
+
+    @Step("Open monitors from catalog")
+    public SearchResultsPage chooseMonitorsFromCatalog() {
+        catalog.click();
+        displaySection.click();
+        return new SearchResultsPage(driver);
     }
 }
