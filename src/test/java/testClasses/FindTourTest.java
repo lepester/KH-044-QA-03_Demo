@@ -18,8 +18,7 @@ public class FindTourTest extends BaseTest {
                 .selectFourDaysDate()
                 .selectMeals("Другое")
                 .findTour();
-        String actualString = driver.getTitle();
-        String expectedString = "Горящие туры в Турцию";
-        Assert.assertEquals("Турцию", expectedString.substring(expectedString.length()-"Турцию".length()), actualString);
+        Assert.assertTrue(driver.getTitle().contains("Турцию"));
+
     }
 }
