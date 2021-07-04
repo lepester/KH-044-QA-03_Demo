@@ -73,7 +73,7 @@ public class RozetkaTravelHomePage extends BasePage {
     }
 
     @Step("Choose date of departure as 'Сегодняшняя дата + 4 дня'")
-    public RozetkaTravelHomePage selectDateDeparture() {
+    public RozetkaTravelHomePage selectFourDaysDate() {
         clickableWaiter(searchButton);
         actions().moveToElement(date).click().perform();
         clickableWaiter(plusButton);

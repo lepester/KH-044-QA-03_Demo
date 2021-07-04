@@ -17,9 +17,11 @@ public class FindTourTest extends BaseTest {
                 .closeSplashWindow()
                 .selectCityDeparture("Харьков")
                 .selectCountryArrival("Турция")
-                .selectDateDeparture()
+                .selectFourDaysDate()
                 .selectMeals()
                 .findTour();
-        Assert.assertTrue(driver.findElement(By.cssSelector("div.s-result-item")).isDisplayed());
+        String actualString = driver.getTitle();
+        String expectedString = "Горящие туры в Турцию";
+        Assert.assertEquals("Турцию", expectedString.substring(expectedString.length()-"Турцию".length()), actualString);
     }
 }
