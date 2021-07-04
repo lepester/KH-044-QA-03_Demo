@@ -12,6 +12,9 @@ public class PageHeader extends BasePage {
     WebElement sideMenuButton;
     @FindBy(id = "fat-menu")
     WebElement categoryButton;
+    @FindBy(xpath = "//input[@name='search']")
+    WebElement searchInput;
+
 
     public PageHeader(WebDriver driver) {
         super(driver);
@@ -32,5 +35,13 @@ public class PageHeader extends BasePage {
     public String getSearchButtonText() {
         String title = searchButton.getText();
         return title;
+    }
+
+    @Step("Search for the query product on the web-site")
+    public SearchResultsPage searchProduct(String searchText) {
+        searchInput.clear();
+        searchInput.sendKeys(searchText);
+        searchButton.click();
+        return new SearchResultsPage(driver);
     }
 }
