@@ -63,12 +63,18 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Choose food category")
-    public RozetkaTravelHomePage selectMeals() {
+    @Step("Choose food category as {meal}")
+    public RozetkaTravelHomePage selectMeals(String meal) {
         clickableWaiter(meals);
         actions().moveToElement(meals).click().perform();
         List<WebElement> mealType = driver.findElements(By.xpath("//*[@id]/span"));
-        mealType.get(8).click();
+        for (WebElement span : mealType) {
+            if (span.getText().contains(meal)) {
+                clickableWaiter(span);
+                actions().moveToElement(span).click().perform();
+                break;
+            }
+        }
         return this;
     }
 
@@ -81,7 +87,7 @@ public class RozetkaTravelHomePage extends BasePage {
         return this;
     }
 
-    @Step("Click 'Найти' button")
+    @Step("Click find button")
     public RozetkaTravelSearchResultsPage findTour() {
         searchButton.click();
         return new RozetkaTravelSearchResultsPage(driver);

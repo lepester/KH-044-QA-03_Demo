@@ -16,7 +16,7 @@ public class FindTourTest extends BaseTest {
                 .selectCityDeparture("Харьков")
                 .selectCountryArrival("Турция")
                 .selectFourDaysDate()
-                .selectMeals()
+                .selectMeals("Другое")
                 .findTour();
         String actualString = driver.getTitle();
         String expectedString = "Горящие туры в Турцию";
