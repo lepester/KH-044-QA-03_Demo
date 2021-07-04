@@ -43,4 +43,10 @@ public class RozetkaHomePage extends BasePage {
         driver.switchTo().window(tab.get(1));
         return new AppStorePage(driver);
     }
+
+    @Step("Open https://rozetka.com.ua/pages/obmin/ web-site for determination of device`s exchange cost")
+    public RozetkaObminPage openRozetkaObminPage() {
+        driver.get("https://rozetka.com.ua/pages/obmin/");
+        return new RozetkaObminPage(driver);
+    }
 }
