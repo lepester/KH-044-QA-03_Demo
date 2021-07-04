@@ -24,8 +24,8 @@ public class RegisterPage extends BasePage{
         super(driver);
     }
 
-    @Step("Get incorrect user data and insert them into specific fields")
-    public void getIncorrectUserDataParameters(String name, String surname, String phone, String email, String password){
+    @Step("Get user data and insert them into specific fields")
+    public void getUserDataParameters(String name, String surname, String phone, String email, String password){
         userName.sendKeys(name);
         userSurname.sendKeys(surname);
         userPhone.sendKeys(phone);

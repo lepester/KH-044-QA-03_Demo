@@ -23,7 +23,7 @@ public class RegistrationValidationTest extends BaseTest{
         rozetkaHomePage
                 .goToLoginPage()
                 .goToRegister()
-                .getIncorrectUserDataParameters(name, surname, phone, email, password);
+                .getUserDataParameters(name, surname, phone, email, password);
 
         RegisterPage registerPage = new RegisterPage(driver);
         Assert.assertTrue(registerPage.isValidationMsgPresent());
