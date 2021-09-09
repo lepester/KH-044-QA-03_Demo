@@ -33,7 +33,7 @@ public class BasePage {
         explicitWait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
-    public void redrawnWaiter(WebElement webElement){
+    public void redrawnWaiter(WebElement webElement) {
         explicitWait.until(ExpectedConditions.stalenessOf(webElement));
     }
 }
